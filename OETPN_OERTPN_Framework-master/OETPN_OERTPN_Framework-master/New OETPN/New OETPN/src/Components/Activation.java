@@ -67,7 +67,6 @@ public class Activation implements Serializable {
 		this.Operation = Condition;
 	}
 
-	
 	public void Activate() throws CloneNotSupportedException {
 
 		if (Operation == TransitionOperation.Move)
@@ -136,6 +135,8 @@ public class Activation implements Serializable {
 		if (Operation == TransitionOperation.Div_FloatFloat)
 			Div_FloatFlaot();
 		// ---------------------------------------------------------
+		if (Operation == TransitionOperation.Square)
+			Square();
 	}
 
 	private void MakeNull() throws CloneNotSupportedException {
@@ -327,6 +328,41 @@ public class Activation implements Serializable {
 		}
 		result.SetName(OutputPlaceName);
 		Parent.Parent.PlaceList.set(outputIndex, result);
+	}
+
+	private void Square() throws CloneNotSupportedException {
+		PetriObject temp = util.GetFromListByName(InputPlaceName, Parent.TempMarking);
+		if (temp == null) {
+			temp = util.GetFromListByName(InputPlaceName, Parent.Parent.ConstantPlaceList);
+			
+		}
+		PetriObject result = null;
+
+		if (temp instanceof DataFloat) {
+			temp.SetValue((Float)temp.GetValue()*(Float)temp.GetValue());
+			result = (PetriObject) ((DataFloat) temp).clone();
+		}
+
+		if (temp instanceof DataInteger) {
+			temp.SetValue((Integer)temp.GetValue()*(Integer)temp.GetValue());
+			result = (PetriObject) ((DataInteger) temp).clone();
+		}
+
+
+		if (result == null) {
+			return;
+		}
+
+		if (OutputPlaceName.contains("-")) {
+			result.SetName(OutputPlaceName.split("-")[1]);
+		} else {
+			result.SetName(OutputPlaceName);
+		}
+
+		result.SetValue(temp.GetValue());
+
+		util.SetToListByName(OutputPlaceName, Parent.Parent.PlaceList, result);
+
 	}
 
 	private void Sub() throws CloneNotSupportedException {

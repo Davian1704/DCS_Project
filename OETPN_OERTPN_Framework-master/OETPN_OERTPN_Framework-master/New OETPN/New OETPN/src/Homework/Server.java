@@ -60,10 +60,7 @@ public class Server {
 		GuardMapping grdT1 = new GuardMapping();
 		grdT1.condition = T1Ct1;
 		
-		ArrayList<String> lstInput = new ArrayList<String>();
-		lstInput.add("p1");
-		lstInput.add("constValue");
-		grdT1.Activations.add(new Activation(t1, lstInput, TransitionOperation.Prod, "p2"));
+		grdT1.Activations.add(new Activation(t1, "p1", TransitionOperation.Square, "p2"));
 		t1.GuardMappingList.add(grdT1);
 		t1.Delay = 0;
 		pn.Transitions.add(t1);
