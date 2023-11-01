@@ -46,7 +46,7 @@ public class Exercise1 {
 
 		DataTransfer OP1 = new DataTransfer();
 		OP1.SetName("OP1");
-		OP1.Value = new TransferOperation("localhost", "1081", "in1");
+		OP1.Value = new TransferOperation("localhost", "1081", "in");
 		pn.PlaceList.add(OP1);
 		
 		DataString full = new DataString();
