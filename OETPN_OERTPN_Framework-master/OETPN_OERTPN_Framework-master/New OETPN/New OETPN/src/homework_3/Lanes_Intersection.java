@@ -211,11 +211,20 @@ public class Lanes_Intersection {
 
 		GuardMapping grdT1 = new GuardMapping();
 		grdT1.condition = T1Ct1;
-		grdT1.Activations.add(new Activation(t1, "full", TransitionOperation.SendOverNetwork, "OP1"));
+
 		grdT1.Activations.add(new Activation(t1, "P_a1", TransitionOperation.AddElement, "P_x1"));
 		grdT1.Activations.add(new Activation(t1, "P_a1", TransitionOperation.Move,"P_a1"));
-
 		t1.GuardMappingList.add(grdT1);
+		
+		Condition T1Ct3 = new Condition(t1, "P_a1", TransitionCondition.NotNull);
+		Condition T1Ct4 = new Condition(t1, "P_x1", TransitionCondition.CanNotAddCars);
+		T1Ct3.SetNextCondition(LogicConnector.AND, T1Ct4);
+
+		GuardMapping grdT1_1 = new GuardMapping();
+		grdT1_1.condition= T1Ct3;
+		grdT1_1.Activations.add(new Activation(t1, "full", TransitionOperation.SendOverNetwork, "OP1"));
+		grdT1_1.Activations.add(new Activation(t1, "P_a1", TransitionOperation.Copy, "P_a1"));
+		t1.GuardMappingList.add(grdT1_1);
 
 		t1.Delay = 0;
 		pn.Transitions.add(t1);
@@ -252,11 +261,21 @@ public class Lanes_Intersection {
 
 		GuardMapping grdT3 = new GuardMapping();
 		grdT3.condition = T3Ct1;
-		grdT3.Activations.add(new Activation(t3, "P_a2", TransitionOperation.AddElement, "P_x2"));
 		grdT3.Activations.add(new Activation(t3, "full", TransitionOperation.SendOverNetwork, "OP2"));
 		grdT3.Activations.add(new Activation(t3, "P_a2", TransitionOperation.AddElement, "P_x2"));
 		grdT3.Activations.add(new Activation(t3, "P_a2", TransitionOperation.Move,"P_a2"));
 
+		Condition T2Ct3 = new Condition(t3, "P_a2", TransitionCondition.NotNull);
+		Condition T2Ct4 = new Condition(t3, "P_x2", TransitionCondition.CanNotAddCars);
+		T2Ct3.SetNextCondition(LogicConnector.AND, T2Ct4);
+
+		GuardMapping grdT1_2 = new GuardMapping();
+		grdT1_2.condition= T1Ct3;
+		grdT1_2.Activations.add(new Activation(t3, "full", TransitionOperation.SendOverNetwork, "OP2"));
+		grdT1_2.Activations.add(new Activation(t3, "P_a2", TransitionOperation.Copy, "P_a2"));
+		t1.GuardMappingList.add(grdT1_2);
+
+		
 		t3.GuardMappingList.add(grdT3);
 
 		t3.Delay = 0;

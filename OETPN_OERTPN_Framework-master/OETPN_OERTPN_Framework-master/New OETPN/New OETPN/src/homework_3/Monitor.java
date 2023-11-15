@@ -18,6 +18,7 @@ public class Monitor {
 		
 		DataString p0 = new DataString();
 		p0.SetName("p0");
+		p0.SetValue("signal");
 		pn.PlaceList.add(p0);
 		
 		DataString p1 = new DataString();
@@ -39,7 +40,8 @@ public class Monitor {
 		grdt0.condition = t0Ct1;
 		grdt0.Activations.add(new Activation(t0, "in", TransitionOperation.Move,"p1"));
 		grdt0.Activations.add(new Activation(t0,"p0",TransitionOperation.Copy,"p0"));
-		
+		t0.GuardMappingList.add(grdt0);
+
 		t0.Delay = 0;
 		pn.Transitions.add(t0);
 		
