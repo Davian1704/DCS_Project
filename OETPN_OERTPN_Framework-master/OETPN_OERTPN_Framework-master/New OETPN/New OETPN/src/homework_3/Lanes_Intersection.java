@@ -223,7 +223,7 @@ public class Lanes_Intersection {
 		GuardMapping grdT1_1 = new GuardMapping();
 		grdT1_1.condition= T1Ct3;
 		grdT1_1.Activations.add(new Activation(t1, "full", TransitionOperation.SendOverNetwork, "OP1"));
-		grdT1_1.Activations.add(new Activation(t1, "P_a1", TransitionOperation.Copy, "P_a1"));
+		grdT1_1.Activations.add(new Activation(t1, "P_a1", TransitionOperation.Move, "P_a1"));
 		t1.GuardMappingList.add(grdT1_1);
 
 		t1.Delay = 0;
@@ -261,7 +261,6 @@ public class Lanes_Intersection {
 
 		GuardMapping grdT3 = new GuardMapping();
 		grdT3.condition = T3Ct1;
-		grdT3.Activations.add(new Activation(t3, "full", TransitionOperation.SendOverNetwork, "OP2"));
 		grdT3.Activations.add(new Activation(t3, "P_a2", TransitionOperation.AddElement, "P_x2"));
 		grdT3.Activations.add(new Activation(t3, "P_a2", TransitionOperation.Move,"P_a2"));
 
@@ -269,11 +268,11 @@ public class Lanes_Intersection {
 		Condition T2Ct4 = new Condition(t3, "P_x2", TransitionCondition.CanNotAddCars);
 		T2Ct3.SetNextCondition(LogicConnector.AND, T2Ct4);
 
-		GuardMapping grdT1_2 = new GuardMapping();
-		grdT1_2.condition= T1Ct3;
-		grdT1_2.Activations.add(new Activation(t3, "full", TransitionOperation.SendOverNetwork, "OP2"));
-		grdT1_2.Activations.add(new Activation(t3, "P_a2", TransitionOperation.Copy, "P_a2"));
-		t1.GuardMappingList.add(grdT1_2);
+		GuardMapping grdT2_1 = new GuardMapping();
+		grdT2_1.condition= T2Ct3;
+		grdT2_1.Activations.add(new Activation(t3, "full", TransitionOperation.SendOverNetwork, "OP2"));
+		grdT2_1.Activations.add(new Activation(t3, "P_a2", TransitionOperation.Move, "P_a2"));
+		t1.GuardMappingList.add(grdT2_1);
 
 		
 		t3.GuardMappingList.add(grdT3);
@@ -313,10 +312,18 @@ public class Lanes_Intersection {
 		GuardMapping grdT5 = new GuardMapping();
 		grdT5.condition = T5Ct1;
 		grdT5.Activations.add(new Activation(t5, "P_a3", TransitionOperation.AddElement, "P_x3"));
-		grdT5.Activations.add(new Activation(t5, "full", TransitionOperation.SendOverNetwork, "OP3"));
-		grdT5.Activations.add(new Activation(t5, "P_a3", TransitionOperation.AddElement, "P_x3"));
 		grdT5.Activations.add(new Activation(t5, "P_a3", TransitionOperation.Move,"P_a3"));
 
+		Condition T5Ct3 = new Condition(t1, "P_a1", TransitionCondition.NotNull);
+		Condition T5Ct4 = new Condition(t1, "P_x1", TransitionCondition.CanNotAddCars);
+		T5Ct3.SetNextCondition(LogicConnector.AND, T5Ct4);
+
+		GuardMapping grdT3_1 = new GuardMapping();
+		grdT3_1.condition= T5Ct3;
+		grdT3_1.Activations.add(new Activation(t5, "full", TransitionOperation.SendOverNetwork, "OP3"));
+		grdT3_1.Activations.add(new Activation(t5, "P_a3", TransitionOperation.Move, "P_a3"));
+		t1.GuardMappingList.add(grdT3_1);
+		
 		t5.GuardMappingList.add(grdT5);
 
 		t5.Delay = 0;
@@ -353,12 +360,19 @@ public class Lanes_Intersection {
 
 		GuardMapping grdT7 = new GuardMapping();
 		grdT7.condition = T7Ct1;
-		grdT7.Activations.add(new Activation(t7, "P_a4", TransitionOperation.AddElement, "P_x4"));
-		grdT1.Activations.add(new Activation(t7, "full", TransitionOperation.SendOverNetwork, "OP4"));
 		grdT1.Activations.add(new Activation(t7, "P_a4", TransitionOperation.AddElement, "P_x4"));
 		grdT1.Activations.add(new Activation(t7, "P_a4", TransitionOperation.Move,"P_a4"));
-
 		t7.GuardMappingList.add(grdT7);
+		
+		Condition T7Ct3 = new Condition(t1, "P_a1", TransitionCondition.NotNull);
+		Condition T7Ct4 = new Condition(t1, "P_x1", TransitionCondition.CanNotAddCars);
+		T7Ct3.SetNextCondition(LogicConnector.AND, T7Ct4);
+
+		GuardMapping grdT7_1 = new GuardMapping();
+		grdT7_1.condition= T7Ct3;
+		grdT7_1.Activations.add(new Activation(t7, "full", TransitionOperation.SendOverNetwork, "OP4"));
+		grdT7_1.Activations.add(new Activation(t7, "P_a4", TransitionOperation.Move, "P_a4"));
+		t7.GuardMappingList.add(grdT7_1);
 
 		t7.Delay = 0;
 		pn.Transitions.add(t7);
