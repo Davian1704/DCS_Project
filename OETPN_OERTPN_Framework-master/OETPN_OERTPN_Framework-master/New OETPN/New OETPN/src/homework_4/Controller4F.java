@@ -262,7 +262,7 @@ public class Controller4F {
 		//----------------------------T8------------------------------------
 		PetriTransition t8 = new PetriTransition(pn);
 		t8.TransitionName = "T8";
-		t8.InputPlaceName.add("r1r2g3r4");
+		t8.InputPlaceName.add("r1r2r3g4");
 						
 						
 		Condition T8Ct1 = new Condition(t8, "r1r2r3g4", TransitionCondition.NotNull);
