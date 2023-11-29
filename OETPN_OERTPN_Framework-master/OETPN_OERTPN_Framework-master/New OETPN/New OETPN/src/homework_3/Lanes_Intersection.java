@@ -52,7 +52,7 @@ public class Lanes_Intersection {
 		
 		DataTransfer OP1 = new DataTransfer();
 		OP1.SetName("OP1");
-		OP1.Value = new TransferOperation("localhost", "1081", "in");
+		OP1.Value = new TransferOperation("localhost", "1081", "in1");
 		pn.PlaceList.add(OP1);
 
 		// -------------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ public class Lanes_Intersection {
 		
 		DataTransfer OP2 = new DataTransfer();
 		OP2.SetName("OP2");
-		OP2.Value = new TransferOperation("localhost", "1081", "in");
+		OP2.Value = new TransferOperation("localhost", "1081", "in2");
 		pn.PlaceList.add(OP2);
 
 		// -------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ public class Lanes_Intersection {
 		
 		DataTransfer OP3 = new DataTransfer();
 		OP3.SetName("OP3");
-		OP3.Value = new TransferOperation("localhost", "1081", "in");
+		OP3.Value = new TransferOperation("localhost", "1081", "in3");
 		pn.PlaceList.add(OP3);
 
 		// -------------------------------------------------------------------------------------
@@ -129,8 +129,8 @@ public class Lanes_Intersection {
 		pn.PlaceList.add(p16);
 
 		DataTransfer OP4 = new DataTransfer();
-		OP4.SetName("OP1");
-		OP4.Value = new TransferOperation("localhost", "1081", "in");
+		OP4.SetName("OP4");
+		OP4.Value = new TransferOperation("localhost", "1081", "in4");
 		pn.PlaceList.add(OP4);
 		
 		DataTransfer PO4 = new DataTransfer();

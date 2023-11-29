@@ -1,4 +1,4 @@
-package homework_4;
+package homework_5;
 import Components.Activation;
 import Components.Condition;
 import Components.GuardMapping;
@@ -99,6 +99,22 @@ public class Controller4F {
 		DataString p13 = new DataString();
 		p13.SetName("r1r2r3y4");
 		pn.PlaceList.add(p13);
+		
+		DataString in1 = new DataString();
+		in1.SetName("in1");
+		pn.PlaceList.add(in1);
+		
+		DataString in2 = new DataString();
+		in2.SetName("in2");
+		pn.PlaceList.add(in2);
+		
+		DataString in3 = new DataString();
+		in3.SetName("in3");
+		pn.PlaceList.add(in3);
+		
+		DataString in4 = new DataString();
+		in4.SetName("in4");
+		pn.PlaceList.add(in4);
 		
 		//----------------------------iniT------------------------------------
 		PetriTransition iniT = new PetriTransition(pn);
